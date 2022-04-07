@@ -11,5 +11,5 @@ You need to install the [go1.12.x](https://go.dev/dl/) for your OS to build this
 ## Run tests
 
 ```shell
-go test
+go test ./...    # (in project root folder)
 ```
