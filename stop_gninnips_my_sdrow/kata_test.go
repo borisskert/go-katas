@@ -19,7 +19,7 @@ var _ = Describe("Test Sample", func() {
 	})
 })
 
-func TestAdder(t *testing.T) {
+func TestSuite(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Run SpinWords tests")
+	RunSpecs(t, "Stop gninnipS My sdroW!")
 }
