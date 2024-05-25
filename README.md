@@ -6,7 +6,13 @@ This repo contains my solutions for some Go katas submitted in [Codewars](https:
 
 ## Prerequisites
 
-You need to install the [go1.18.x](https://go.dev/dl/) for your OS to build this project and run its tests.
+You need to install the [go1.22.x](https://go.dev/dl/) for your OS to build this project and run its tests.
+
+## Linting Code
+
+```shell
+golangci-lint run    # (in project root folder)
+```
 
 ## Run tests
 
