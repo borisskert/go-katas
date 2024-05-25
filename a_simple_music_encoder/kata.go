@@ -325,7 +325,7 @@ func (ctx List[T]) SortedWith(less func(a, b T) bool) List[T] {
 
 func (ctx List[T]) All(predicate func(T) bool) bool {
 	for _, item := range ctx.items {
-		if predicate(item) == false {
+		if !predicate(item) {
 			return false
 		}
 	}
@@ -336,9 +336,7 @@ func (ctx List[T]) All(predicate func(T) bool) bool {
 func (ctx List[T]) Items() []T {
 	items := make([]T, len(ctx.items))
 
-	for index, item := range ctx.items {
-		items[index] = item
-	}
+	copy(items, ctx.items)
 
 	return items
 }

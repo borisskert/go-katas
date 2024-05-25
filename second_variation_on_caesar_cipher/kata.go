@@ -32,11 +32,6 @@ func (ctx Prefix) encrypt(cleartext string) ciphertext {
 	return ciphertext(ctx.prefix + encrypted)
 }
 
-func (ctx Prefix) decrypt(ciphertext string) cleartext {
-	decrypted := decrypt(ciphertext, ctx.shift)
-	return cleartext(decrypted)
-}
-
 type cleartext string
 
 func (ctx cleartext) prefix(shift int) Prefix {
@@ -67,13 +62,6 @@ func (ctx ciphertext) shift() int {
 	return (int(second) - int(first) + alphabetSize) % alphabetSize
 }
 
-func (ctx ciphertext) prefix() Prefix {
-	shift := ctx.shift()
-	prefix := string(ctx[0:2])
-
-	return Prefix{prefix, shift}
-}
-
 func (ctx ciphertext) decrypt() cleartext {
 	shift := ctx.shift()
 	payload := string(ctx)[2:]
@@ -89,9 +77,9 @@ func (ctx chunks) ciphertext() ciphertext {
 }
 
 func encrypt(cleartext string, shift int) string {
-	var ciphertext []rune
+	var ciphertext = []rune{}
 
-	for _, element := range []rune(cleartext) {
+	for _, element := range cleartext {
 		encrypted := encryptRune(element, shift)
 		ciphertext = append(ciphertext, encrypted)
 	}
@@ -99,18 +87,15 @@ func encrypt(cleartext string, shift int) string {
 	return string(ciphertext)
 }
 
-func decrypt(ciphertext string, shift int) string {
-	return encrypt(ciphertext, shift*-1)
-}
-
 func encryptRune(cleartext rune, shift int) rune {
 	var offset int8
 
-	if unicode.IsLower(cleartext) {
+	switch {
+	case unicode.IsLower(cleartext):
 		offset = int8('a')
-	} else if unicode.IsUpper(cleartext) {
+	case unicode.IsUpper(cleartext):
 		offset = int8('A')
-	} else {
+	default:
 		return cleartext
 	}
 
@@ -129,6 +114,7 @@ func makeChunks(ciphertext string, chunkSize int) []string {
 
 	if len(remaining) > 0 {
 		furtherChunks := makeChunks(remaining, chunkSize)
+
 		return append([]string{chunk}, furtherChunks...)
 	}
 

@@ -70,7 +70,7 @@ func NewWeight(raw string) Weight {
 func crossSumOf(raw string) int {
 	var crossSum = 0
 
-	for _, element := range []rune(raw) {
+	for _, element := range raw {
 		crossSum += int(element - '0')
 	}
 

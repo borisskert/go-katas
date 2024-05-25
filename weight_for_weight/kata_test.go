@@ -11,10 +11,6 @@ func dotest(s string, exp string) {
 	Expect(ans).To(Equal(exp))
 }
 
-type MyString struct {
-	value string
-}
-
 var _ = Describe("Tests OrderWeight", func() {
 
 	It("should handle basic cases", func() {
