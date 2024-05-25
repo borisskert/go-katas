@@ -4,11 +4,11 @@ package kata
 func ValidParentheses(parens string) bool {
 	balance := 0
 
-	for _, element := range []rune(parens) {
+	for _, element := range parens {
 		if element == '(' {
-			balance += 1
+			balance++
 		} else if element == ')' {
-			balance -= 1
+			balance--
 		}
 
 		if balance < 0 {

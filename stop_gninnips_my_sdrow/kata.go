@@ -21,7 +21,8 @@ func SpinWords(str string) string {
 func Reverse(str string) string {
 	chars := []rune(str)
 	size := len(chars)
-	reversed := make([]rune, size, size)
+
+	var reversed = make([]rune, size)
 
 	for index := 0; index < size; index++ {
 		reversed[index] = chars[size-index-1]
