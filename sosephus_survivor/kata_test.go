@@ -1,7 +1,6 @@
 package kata
 
 import (
-	. "fmt"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 	"testing"
@@ -18,7 +17,6 @@ var _ = Describe("Sample Tests", func() {
 })
 
 func dotest(n, k, e int) {
-	Println(n, k)
 	Expect(JosephusSurvivor(n, k)).To(Equal(e))
 }
 
