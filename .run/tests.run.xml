@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="tests" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="go-katas" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="-- -count=1" />
+    <kind value="DIRECTORY" />
+    <package value="go-katas" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>
